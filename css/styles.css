@@ -20,6 +20,14 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   -webkit-tap-highlight-color: transparent; /* Removes tap highlight color on mobile */
+   -webkit-touch-callout: none; /* Prevents callout menu on long press */
+}
+
+.nav-arrow, .close, .nav a, .theme-toggle {
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   user-select: none;
 }
 
 body {
