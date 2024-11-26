@@ -228,24 +228,20 @@ body {
    position: fixed;
    top: 50%;
    transform: translateY(-50%);
-   color: white;
-   font-size: 36px;
+   color: rgba(255, 255, 255, 0.4);
+   font-size: 60px;
    cursor: pointer;
    padding: 20px;
    user-select: none;
-   background-color: rgba(0, 0, 0, 0.3);
-   border-radius: 50%;
-   width: 60px;
-   height: 60px;
    display: flex;
    align-items: center;
    justify-content: center;
-   transition: background-color 0.3s;
+   transition: color 0.3s;
    z-index: 1002;
 }
 
 .nav-arrow:hover {
-   background-color: rgba(255, 255, 255, 0.2);
+   color: rgba(255, 255, 255, 0.6);
 }
 
 .prev {
@@ -257,7 +253,7 @@ body {
 }
 
 @media (max-width: 768px) {
-   
+
    .modal-content {
       max-width: 95%;
       max-height: 95vh;
@@ -272,12 +268,10 @@ body {
    }
 
    .nav-arrow {
-      width: 45px;
-      height: 45px;
-      font-size: 24px;
-      padding: 10px;
+      font-size: 40px;
+      padding: 15px;
    }
-  
+
    .header {
       padding: 20px 10px;
       padding-top: 60px;
