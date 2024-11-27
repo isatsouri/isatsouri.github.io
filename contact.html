@@ -12,10 +12,12 @@
 <body>
     <header class="header">
         <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
+            <!-- <i class="fas fa-bars"></i> -->
+            <img src="icons/menu-left.svg" alt="Menu" class="icon">
         </button>
         <button class="theme-toggle" onclick="toggleTheme()">
-            <i class="fas fa-moon"></i>
+            <!-- <i class="fas fa-moon"></i> -->
+            <img src="icons/moon.svg" alt="Theme - Dark Mode" class="icon" id="theme-icon">
         </button>
         <h1>ISIDORA TSOURI</h1>
         <nav class="nav">
@@ -24,7 +26,7 @@
             <a href="index.html#nudes" data-category="nudes">Nudes</a>
             <a href="index.html#still_lives" data-category="still_lives">Still Lives</a>
             <a href="index.html#open_air" data-category="open_air">Open Air</a>
-            <a href="resume.html">Resume</a>
+            <a href="resume.html">Résumé</a>
             <a href="contact.html" class="active">Contact</a>
         </nav>
         <div class="menu-overlay"></div>
@@ -42,14 +44,6 @@
                 @isatsouri
             </a>
         </div>
-    </div>
-
-    <!-- Modal/Lightbox -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="nav-arrow prev" onclick="navigate(-1)">&#10094;</div>
-        <div class="nav-arrow next" onclick="navigate(1)">&#10095;</div>
-        <img class="modal-content" id="modalImage">
     </div>
 
     <footer class="footer">

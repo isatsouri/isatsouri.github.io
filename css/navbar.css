@@ -61,7 +61,7 @@
        left: -100%;
        width: 280px;
        height: 100vh;
-       background-color: rgba(var(--background-rgb), 0.4); /* Using RGB for transparency */
+       background-color: rgba(var(--background-rgb), 0.6); /* Using RGB for transparency */
        backdrop-filter: blur(10px);
        -webkit-backdrop-filter: blur(10px); /* For Safari */
        padding: 80px 20px 20px;
