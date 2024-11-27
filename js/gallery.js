@@ -117,17 +117,31 @@ class Gallery {
         });
     }
 
+    // openModal(imgElement) {
+    //     this.modal.style.display = "block";
+    //     this.modalImg.src = imgElement.src;
+        
+    //     // Find the index of current image
+    //     const visibleItems = Array.from(this.galleryItems)
+    //         .filter(item => !item.classList.contains('hidden'));
+    //     this.currentImageIndex = visibleItems
+    //         .findIndex(item => item.contains(imgElement));
+
+    //     // Prevent body scrolling when modal is open
+    //     document.body.style.overflow = 'hidden';
+    // }
     openModal(imgElement) {
         this.modal.style.display = "block";
         this.modalImg.src = imgElement.src;
         
-        // Find the index of current image
+        // error handling for caption
+        const captionElement = imgElement.closest('.gallery-item').querySelector('.image-caption h3');
+        const caption = captionElement ? captionElement.textContent : '';
+        document.getElementById('modalCaption').innerHTML = caption ? `<h3>${caption}</h3>` : '';
+        
         const visibleItems = Array.from(this.galleryItems)
             .filter(item => !item.classList.contains('hidden'));
-        this.currentImageIndex = visibleItems
-            .findIndex(item => item.contains(imgElement));
-
-        // Prevent body scrolling when modal is open
+        this.currentImageIndex = visibleItems.findIndex(item => item.contains(imgElement));
         document.body.style.overflow = 'hidden';
     }
 
@@ -154,18 +168,38 @@ class Gallery {
         }
     }
 
+    // navigate(direction) {
+    //     const visibleItems = Array.from(this.galleryItems)
+    //         .filter(item => !item.classList.contains('hidden'));
+    //     this.currentImageIndex = 
+    //         (this.currentImageIndex + direction + visibleItems.length) % visibleItems.length;
+        
+    //     // Create temporary image to handle loading
+    //     const tempImage = new Image();
+    //     tempImage.onload = () => {
+    //         this.modalImg.src = tempImage.src;
+    //     };
+    //     tempImage.src = visibleItems[this.currentImageIndex].querySelector('img').src;
+    // }
     navigate(direction) {
         const visibleItems = Array.from(this.galleryItems)
             .filter(item => !item.classList.contains('hidden'));
         this.currentImageIndex = 
             (this.currentImageIndex + direction + visibleItems.length) % visibleItems.length;
         
-        // Create temporary image to handle loading
+        const nextItem = visibleItems[this.currentImageIndex];
+        const nextImage = nextItem.querySelector('img');
+        
+        // error handling for caption
+        const captionElement = nextItem.querySelector('.image-caption h3');
+        const nextCaption = captionElement ? captionElement.textContent : '';
+        
         const tempImage = new Image();
         tempImage.onload = () => {
             this.modalImg.src = tempImage.src;
+            document.getElementById('modalCaption').innerHTML = nextCaption ? `<h3>${nextCaption}</h3>` : '';
         };
-        tempImage.src = visibleItems[this.currentImageIndex].querySelector('img').src;
+        tempImage.src = nextImage.src;
     }
 }
 
