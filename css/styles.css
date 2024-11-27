@@ -260,6 +260,97 @@ body {
    right: 20px;
 }
 
+/* Resume Styles */
+.resume-container {
+   max-width: 800px;
+   margin: 0 auto;
+   padding: 20px;
+   flex: 1;
+}
+
+.resume-section {
+   margin-bottom: 40px;
+}
+
+.resume-section h2 {
+   font-size: 2rem;
+   font-weight: 400;
+   margin-bottom: 20px;
+   color: var(--text);
+   letter-spacing: 2px;
+}
+
+.resume-item {
+   margin-bottom: 30px;
+   padding: 20px;
+   background-color: var(--nav-bg);
+   border-radius: 4px;
+   transition: all 0.3s ease;
+}
+
+.resume-item:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resume-item h3 {
+   font-size: 1.4rem;
+   font-weight: 500;
+   margin-bottom: 10px;
+   color: var(--text);
+}
+
+.resume-item .institution {
+   font-size: 1.1rem;
+   color: var(--text);
+   margin-bottom: 5px;
+   font-style: italic;
+}
+
+.resume-item .year {
+   font-size: 1rem;
+   color: var(--text);
+   opacity: 0.8;
+   margin-bottom: 10px;
+   font-family: 'Abel', sans-serif;
+}
+
+.resume-item .description {
+   font-size: 1.1rem;
+   line-height: 1.6;
+   color: var(--text);
+}
+
+.skills-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   gap: 20px;
+}
+
+.skill-item {
+   padding: 20px;
+   background-color: var(--nav-bg);
+   border-radius: 4px;
+   text-align: center;
+   transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item i {
+   font-size: 2rem;
+   color: var(--text);
+   margin-bottom: 10px;
+}
+
+.skill-item p {
+   font-size: 1.1rem;
+   color: var(--text);
+}
+
 @media (max-width: 768px) {
 
    .modal-content {
@@ -347,6 +438,29 @@ body {
       flex-direction: column;
       gap: 10px;
    }
+
+   /* Resume */
+   .resume-container {
+      padding: 15px;
+   }
+
+   .resume-section h2 {
+      font-size: 1.8rem;
+   }
+
+   .resume-item {
+      padding: 15px;
+   }
+
+   .resume-item h3 {
+      font-size: 1.3rem;
+   }
+
+   .skills-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+   }
+   
 }
 
 @media (max-width: 480px) {
@@ -361,8 +475,14 @@ body {
    .nav a {
       width: 90%;
    }
+
+   /* Resume */
+   .skills-grid {
+      grid-template-columns: 1fr;
+   }
 }
 
 .hidden {
    display: none;
 }
+*/

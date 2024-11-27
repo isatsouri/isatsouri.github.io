@@ -1,0 +1,101 @@
+/* Navigation Styles */
+.nav {
+   padding: 20px 0;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 20px;
+}
+
+.nav a {
+   text-decoration: none;
+   color: var(--text);
+   padding: 10px 20px;
+   border-radius: 4px;
+   transition: all 0.3s ease;
+   font-size: 1.25rem;
+   letter-spacing: 1.5px;
+   font-weight: 500;
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   user-select: none;
+}
+
+.nav a:hover {
+   background-color: var(--nav-hover);
+}
+
+.nav a.active {
+   background-color: var(--nav-active);
+   font-weight: 600;
+}
+
+/* Hamburger Menu Styles */
+.menu-toggle {
+   display: none;
+   position: fixed;
+   top: 15px;
+   left: 15px;
+   z-index: 1000;
+   background: none;
+   border: none;
+   color: var(--text);
+   cursor: pointer;
+   padding: 10px;
+   font-size: 24px;
+   width: 40px;
+   height: 40px;
+   align-items: center;
+   justify-content: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+   .menu-toggle {
+       display: flex;
+   }
+
+   .nav {
+       position: fixed;
+       top: 0;
+       left: -100%;
+       width: 280px;
+       height: 100vh;
+       background-color: rgba(var(--background-rgb), 0.4); /* Using RGB for transparency */
+       backdrop-filter: blur(10px);
+       -webkit-backdrop-filter: blur(10px); /* For Safari */
+       padding: 80px 20px 20px;
+       flex-direction: column;
+       gap: 10px;
+       transition: left 0.3s ease;
+       z-index: 999;
+       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+   }
+
+   .nav.active {
+       left: 0;
+   }
+
+   .nav a {
+       width: 100%;
+       text-align: left;
+       padding: 15px;
+       background: none;
+   }
+
+   /* Overlay when menu is open */
+   .menu-overlay {
+       display: none;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.3);
+       z-index: 998;
+   }
+
+   .menu-overlay.active {
+       display: block;
+   }
+}

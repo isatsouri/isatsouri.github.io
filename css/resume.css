@@ -1,0 +1,242 @@
+.resume-container {
+   max-width: 900px;
+   margin: 0 auto;
+   padding: 20px;
+   flex: 1;
+}
+
+.resume-section {
+   margin-bottom: 60px;
+   position: relative;
+}
+
+.resume-section h2 {
+   font-size: 2.2rem;
+   font-weight: 300;
+   margin-bottom: 30px;
+   color: var(--text);
+   letter-spacing: 3px;
+   text-align: center;
+}
+
+.resume-section h2::after {
+   content: "";
+   display: block;
+   width: 50px;
+   height: 1px;
+   background-color: var(--text);
+   margin: 15px auto 0;
+}
+
+.timeline {
+   position: relative;
+   padding-left: 50px;
+}
+
+.timeline::before {
+   content: '';
+   position: absolute;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 1px;
+   background-color: var(--nav-active);
+}
+
+.resume-item {
+   margin-bottom: 40px;
+   position: relative;
+   padding: 0 0 0 30px;
+}
+
+.resume-item::before {
+   content: '';
+   position: absolute;
+   left: -50px;
+   top: 8px;
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   background-color: var(--text);
+   border: 3px solid var(--background);
+   box-shadow: 0 0 0 1px var(--nav-active);
+}
+
+.resume-item h3 {
+   font-size: 1.5rem;
+   font-weight: 500;
+   margin-bottom: 10px;
+   color: var(--text);
+   letter-spacing: 1px;
+}
+
+.resume-item .institution {
+   font-size: 1.2rem;
+   color: var(--text);
+   margin-bottom: 8px;
+   font-style: italic;
+   opacity: 0.9;
+}
+
+.resume-item .year {
+   font-size: 0.95rem;
+   color: var(--text);
+   opacity: 0.7;
+   margin-bottom: 12px;
+   font-family: 'Abel', sans-serif;
+   letter-spacing: 1px;
+}
+
+.resume-item .description {
+   font-size: 1.2rem;
+   line-height: 1.6;
+   color: var(--text);
+   opacity: 0.9;
+}
+
+.resume-item .location {
+   font-size: 1.2rem;
+   color: var(--text);
+   margin: 5px 0;
+   /* font-family: 'Abel', sans-serif; */
+   letter-spacing: 1px;
+}
+
+/* Skills Section */
+.skills-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 30px;
+   padding: 20px 0;
+}
+
+.skill-item {
+   text-align: center;
+   padding: 30px 20px;
+   background-color: var(--nav-bg);
+   border-radius: 8px;
+   transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
+}
+
+.skill-item::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 3px;
+   background-color: var(--text);
+   opacity: 0.3;
+   transition: opacity 0.3s ease;
+}
+
+.skill-item:hover::before {
+   opacity: 1;
+}
+
+.skill-item i {
+   font-size: 2.5rem;
+   color: var(--text);
+   margin-bottom: 15px;
+   transition: transform 0.3s ease;
+}
+
+.skill-item:hover i {
+   transform: translateY(-5px);
+}
+
+.skill-item p {
+   font-size: 1.1rem;
+   color: var(--text);
+   letter-spacing: 1px;
+}
+
+/* Additional Classes */
+.resume-item .distinction {
+   font-weight: 500;
+   color: var(--text);
+   margin: 8px 0;
+   font-size: 1.1rem;
+}
+
+.resume-item .grade {
+   font-family: 'Abel', sans-serif;
+   letter-spacing: 1px;
+}
+
+.resume-item .activities {
+   color: var(--text);
+   opacity: 0.8;
+   font-style: italic;
+   font-size: 1.2rem;
+}
+
+.resume-item .instructor {
+   color: var(--text);
+   font-size: 1.2rem;
+   margin: 5px 0;
+   font-style: italic;
+   opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+   .resume-container {
+       padding: 15px;
+   }
+
+   .resume-section {
+       margin-bottom: 40px;
+   }
+
+   .resume-section h2 {
+       font-size: 1.8rem;
+   }
+
+   .timeline {
+       padding-left: 30px;
+   }
+
+   .resume-item {
+       padding-left: 20px;
+   }
+
+   .resume-item::before {
+       left: -36px;
+       top: 6px;
+       width: 10px;
+       height: 10px;
+   }
+
+   .skills-grid {
+       grid-template-columns: repeat(2, 1fr);
+       gap: 20px;
+   }
+
+   .skill-item {
+       padding: 20px 15px;
+   }
+}
+
+@media (max-width: 480px) {
+   .timeline {
+       padding-left: 25px;
+   }
+
+   .resume-item {
+       padding-left: 15px;
+   }
+
+   .resume-item::before {
+       left: -31px;
+   }
+
+   .skills-grid {
+       grid-template-columns: 1fr;
+   }
+
+   .resume-section h2 {
+       font-size: 1.6rem;
+   }
+}

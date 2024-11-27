@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact - ISIDORA TSOURI</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- <div class="theme-toggle-container">
-        <button class="theme-toggle-mobile" onclick="toggleTheme()">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div> -->
     <header class="header">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
         <button class="theme-toggle" onclick="toggleTheme()">
             <i class="fas fa-moon"></i>
         </button>
         <h1>ISIDORA TSOURI</h1>
         <nav class="nav">
             <a href="index.html">Overview</a>
-            <a href="index.html#people">People</a>
-            <a href="index.html#things">Things</a>
+            <a href="index.html#models" data-category="models">Models</a>
+            <a href="index.html#nudes" data-category="nudes">Nudes</a>
+            <a href="index.html#still_lives" data-category="still_lives">Still Lives</a>
+            <a href="index.html#open_air" data-category="open_air">Open Air</a>
+            <a href="resume.html">Resume</a>
             <a href="contact.html" class="active">Contact</a>
         </nav>
+        <div class="menu-overlay"></div>
     </header>
 
     <div class="contact-container">
@@ -55,5 +59,6 @@
     </footer>
 
     <script src="js/theme.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 </html>

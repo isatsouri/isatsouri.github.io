@@ -10,15 +10,43 @@ class Gallery {
        if (this.modal) {
            this.initializeEventListeners();
        }
+
+       // Handle initial category from URL
+       this.handleInitialCategory();
+   }
+
+   handleInitialCategory() {
+       // Get category from URL hash (e.g., #people)
+       const hash = window.location.hash.substring(1); // Remove the # symbol
+       if (hash && hash !== 'all') {
+           const categoryLink = document.querySelector(`.nav a[data-category="${hash}"]`);
+           if (categoryLink) {
+               this.updateActiveNav(categoryLink);
+               this.filterImages(hash);
+           }
+       }
    }
 
    initializeEventListeners() {
        // Category filtering
        document.querySelectorAll('.nav a[data-category]').forEach(link => {
            link.addEventListener('click', (e) => {
-               e.preventDefault();
+               const category = link.dataset.category;
+               
+               // Only prevent default if we're already on index.html
+               if (!window.location.pathname.includes('contact.html')) {
+                   e.preventDefault();
+               }
+               
+               // Update URL hash without triggering scroll
+               if (category === 'all') {
+                   history.pushState(null, null, window.location.pathname);
+               } else {
+                   history.pushState(null, null, `#${category}`);
+               }
+               
                this.updateActiveNav(link);
-               this.filterImages(link.dataset.category);
+               this.filterImages(category);
            });
        });
 
@@ -47,27 +75,26 @@ class Gallery {
        });
 
        // Touch events
-       this.modal.addEventListener('touchstart', e => {
+       let lastTap = 0;
+       
+       this.modal.addEventListener('touchstart', (e) => {
            this.touchStartX = e.touches[0].clientX;
            this.touchStartY = e.touches[0].clientY;
-       }, false);
-
-       this.modal.addEventListener('touchend', e => {
-           const touchEndX = e.changedTouches[0].clientX;
-           const touchEndY = e.changedTouches[0].clientY;
-           this.handleSwipe(touchEndX, touchEndY);
-       }, false);
-
-       // Double tap prevention
-       let lastTap = 0;
-       this.modal.addEventListener('touchstart', (e) => {
+           
+           // Double tap prevention
            const currentTime = new Date().getTime();
            const tapLength = currentTime - lastTap;
            if (tapLength < 500 && tapLength > 0) {
                e.preventDefault();
            }
            lastTap = currentTime;
-       });
+       }, false);
+
+       this.modal.addEventListener('touchend', (e) => {
+           const touchEndX = e.changedTouches[0].clientX;
+           const touchEndY = e.changedTouches[0].clientY;
+           this.handleSwipe(touchEndX, touchEndY);
+       }, false);
    }
 
    updateActiveNav(clickedLink) {
@@ -141,6 +168,17 @@ class Gallery {
 // Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
    const gallery = new Gallery();
+   
+   // Handle browser back/forward buttons
+   window.addEventListener('popstate', () => {
+       const hash = window.location.hash.substring(1);
+       const category = hash || 'all';
+       const categoryLink = document.querySelector(`.nav a[data-category="${category}"]`);
+       if (categoryLink) {
+           gallery.updateActiveNav(categoryLink);
+           gallery.filterImages(category);
+       }
+   });
    
    // Expose necessary methods
    window.openModal = (imgElement) => gallery.openModal(imgElement);
