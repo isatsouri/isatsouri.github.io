@@ -211,7 +211,7 @@
 
    .skills-grid {
        grid-template-columns: repeat(2, 1fr);
-       gap: 20px;
+       gap: 15px;
    }
 
    .skill-item {
@@ -233,7 +233,7 @@
    }
 
    .skills-grid {
-       grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
    }
 
    .resume-section h2 {
