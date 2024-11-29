@@ -1,9 +1,6 @@
 class ThemeManager {
     constructor() {
         this.initializeTheme();
-        // Determine if we're in a subdirectory once, at initialization
-        this.isSubdirectory = window.location.pathname.includes('/contact/') || 
-                             window.location.pathname.includes('/resume/');
     }
 
     initializeTheme() {
@@ -24,8 +21,15 @@ class ThemeManager {
     updateThemeToggleIcon(theme) {
         const themeIcon = document.getElementById('theme-icon');
         if (themeIcon) {
-            const pathPrefix = this.isSubdirectory ? '../' : '';
-            themeIcon.src = `${pathPrefix}icons/${theme === 'light' ? 'moon' : 'sun'}.svg`;
+            // Get current path
+            const currentPath = window.location.pathname;
+            
+            // If path includes '/resume' or '/contact', we need to go up one directory
+            const iconPath = currentPath.includes('/resume') || currentPath.includes('/contact') 
+                ? '../icons/' 
+                : 'icons/';
+            
+            themeIcon.src = `${iconPath}${theme === 'light' ? 'moon' : 'sun'}.svg`;
         }
     }
 }
