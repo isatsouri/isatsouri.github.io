@@ -1,3 +1,4 @@
+/* Resume Container */
 .resume-container {
    max-width: 900px;
    margin: 0 auto;
@@ -5,6 +6,7 @@
    flex: 1;
 }
 
+/* Resume Section */
 .resume-section {
    margin-bottom: 60px;
    position: relative;
@@ -28,6 +30,7 @@
    margin: 15px auto 0;
 }
 
+/* Timeline */
 .timeline {
    position: relative;
    padding-left: 50px;
@@ -43,6 +46,7 @@
    background-color: var(--nav-active);
 }
 
+/* Resume Items */
 .resume-item {
    margin-bottom: 40px;
    position: relative;
@@ -153,7 +157,7 @@
    letter-spacing: 1px;
 }
 
-/* Additional Classes */
+/* Additional Classes for Resume Items */
 .resume-item .distinction {
    font-weight: 500;
    color: var(--text);
@@ -181,6 +185,8 @@
    opacity: 0.9;
 }
 
+/* Media Queries */
+/* Medium Devices (Tablets) */
 @media (max-width: 768px) {
    .resume-container {
        padding: 15px;
@@ -219,6 +225,7 @@
    }
 }
 
+/* Small Devices (Phones) */
 @media (max-width: 480px) {
    .timeline {
        padding-left: 25px;
@@ -233,7 +240,7 @@
    }
 
    .skills-grid {
-      grid-template-columns: repeat(2, 1fr);
+       grid-template-columns: repeat(2, 1fr);
    }
 
    .resume-section h2 {

@@ -1,23 +1,26 @@
+/* ----------------------- IMPORTS ----------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Abel&display=swap');
 
+/* ----------------------- THEME VARIABLES ----------------------- */
 :root {
-   --background: #ffffff;
-   --background-rgb: 255, 255, 255;  /* Added RGB values */
-   --text: #333333;
-   --nav-bg: #f8f8f8;
-   --nav-active: #e8e8e8;
-   --nav-hover: #f5f5f5;
+    --background: #ffffff;
+    --background-rgb: 255, 255, 255;
+    --text: #333333;
+    --nav-bg: #f8f8f8;
+    --nav-active: #e8e8e8;
+    --nav-hover: #f5f5f5;
 }
 
 [data-theme="dark"] {
-   --background: #1a1a1a;
-   --background-rgb: 26, 26, 26;  /* Added RGB values */
-   --text: #ffffff;
-   --nav-bg: #2d2d2d;
-   --nav-active: #3d3d3d;
-   --nav-hover: #353535;
+    --background: #1a1a1a;
+    --background-rgb: 26, 26, 26;
+    --text: #ffffff;
+    --nav-bg: #2d2d2d;
+    --nav-active: #3d3d3d;
+    --nav-hover: #353535;
 }
 
+/* ----------------------- GLOBAL STYLES ----------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -36,7 +39,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Header */
+/* ----------------------- HEADER STYLES ----------------------- */
 .header {
     padding: 40px 20px;
     text-align: center;
@@ -51,30 +54,46 @@ body {
     margin-bottom: 30px;
 }
 
-
+/* ----------------------- THEME TOGGLE ----------------------- */
 .theme-toggle {
-   position: fixed; 
-   top: 15px;
-   right: 15px;
-   background: none;
-   border: none;
-   color: var(--text);
-   cursor: pointer;
-   font-size: 24px;
-   padding: 10px;
-   transition: all 0.3s ease;
-   -webkit-tap-highlight-color: transparent;
-   -webkit-touch-callout: none;
-   user-select: none;
-   z-index: 1000; /* Added z-index */
-   width: 40px;
-   height: 40px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Modal */
+/* ----------------------- ICONS ----------------------- */
+.icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    filter: brightness(0) saturate(100%);
+}
+
+[data-theme="light"] .icon {
+    filter: invert(20%);
+}
+
+[data-theme="dark"] .icon {
+    filter: invert(100%);
+}
+
+/* ----------------------- MODAL CAPTION ----------------------- */
 .modal-caption {
     position: fixed;
     bottom: 20px;
@@ -92,7 +111,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* Footer */
+/* ----------------------- FOOTER STYLES ----------------------- */
 .footer {
     text-align: center;
     padding: 20px;
@@ -105,7 +124,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .footer p {
@@ -114,41 +133,35 @@ body {
     letter-spacing: 1px;
 }
 
-/* icons */
-.icon {
-   width: 24px;
-   height: 24px;
-   display: block;
+/* Footer Instagram Icon */
+.social-link {
+    color: var(--text);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
-/* Make icons match theme color */
-.icon {
-   filter: brightness(0) saturate(100%);
+.social-link i {
+    font-size: 1rem;
 }
 
-[data-theme="light"] .icon {
-   filter: invert(20%);  /* For dark icons on light theme */
+.social-link:hover {
+    opacity: 0.7;
 }
 
-[data-theme="dark"] .icon {
-   filter: invert(100%);  /* For white icons on dark theme */
-}
-
-/* Mobile Styles */
+/* ----------------------- MOBILE STYLES ----------------------- */
 @media (max-width: 768px) {
-   
-   .icon {
-      width: 25px;
-      height: 25px;
-   }
-   
+    .icon {
+        width: 25px;
+        height: 25px;
+    }
+
     .header {
         padding: 20px 10px;
     }
 
     .theme-toggle {
-      font-size: 20px;
-   }
+        font-size: 20px;
+    }
 
     .header h1 {
         font-size: 2rem;
@@ -157,7 +170,7 @@ body {
     }
 
     .footer-content {
-        flex-direction: column;
+        flex-direction: row;  /* Changed to keep icon next to text */
         gap: 10px;
     }
 }

@@ -11,12 +11,11 @@ class Gallery {
             this.initializeEventListeners();
         }
 
-        // Handle initial category from URL
         this.handleInitialCategory();
     }
 
     handleInitialCategory() {
-        const hash = window.location.hash.substring(1); // Remove the # symbol
+        const hash = window.location.hash.substring(1);
         if (hash && hash !== 'all') {
             const categoryLink = document.querySelector(`.nav a[data-category="${hash}"]`);
             if (categoryLink) {
@@ -24,23 +23,19 @@ class Gallery {
                 this.filterImages(hash);
             }
         } else {
-            // Add this else block to handle initial page load
-            this.filterImages('all'); // This will show only featured items
+            this.filterImages('all');
         }
     }
 
     initializeEventListeners() {
-        // Category filtering
         document.querySelectorAll('.nav a[data-category]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const category = link.dataset.category;
                 
-                // Only prevent default if we're already on index.html
                 if (!window.location.pathname.includes('contact.html')) {
                     e.preventDefault();
                 }
                 
-                // Update URL hash without triggering scroll
                 if (category === 'all') {
                     history.pushState(null, null, window.location.pathname);
                 } else {
@@ -52,14 +47,12 @@ class Gallery {
             });
         });
 
-        // Modal events
         this.modal.onclick = (e) => {
             if (e.target === this.modal) {
                 this.closeModal();
             }
         };
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (this.modal.style.display === "block") {
                 switch(e.key) {
@@ -76,14 +69,12 @@ class Gallery {
             }
         });
 
-        // Touch events
         let lastTap = 0;
         
         this.modal.addEventListener('touchstart', (e) => {
             this.touchStartX = e.touches[0].clientX;
             this.touchStartY = e.touches[0].clientY;
             
-            // Double tap prevention
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
             if (tapLength < 500 && tapLength > 0) {
@@ -107,7 +98,6 @@ class Gallery {
     filterImages(category) {
         this.galleryItems.forEach(item => {
             if (category === 'all') {
-                // Show only featured items in overview
                 const categories = item.dataset.categories.split(',');
                 item.classList.toggle('hidden', !categories.includes('featured'));
             } else {
@@ -117,24 +107,10 @@ class Gallery {
         });
     }
 
-    // openModal(imgElement) {
-    //     this.modal.style.display = "block";
-    //     this.modalImg.src = imgElement.src;
-        
-    //     // Find the index of current image
-    //     const visibleItems = Array.from(this.galleryItems)
-    //         .filter(item => !item.classList.contains('hidden'));
-    //     this.currentImageIndex = visibleItems
-    //         .findIndex(item => item.contains(imgElement));
-
-    //     // Prevent body scrolling when modal is open
-    //     document.body.style.overflow = 'hidden';
-    // }
     openModal(imgElement) {
         this.modal.style.display = "block";
         this.modalImg.src = imgElement.src;
         
-        // error handling for caption
         const captionElement = imgElement.closest('.gallery-item').querySelector('.image-caption h3');
         const caption = captionElement ? captionElement.textContent : '';
         document.getElementById('modalCaption').innerHTML = caption ? `<h3>${caption}</h3>` : '';
@@ -143,44 +119,38 @@ class Gallery {
             .filter(item => !item.classList.contains('hidden'));
         this.currentImageIndex = visibleItems.findIndex(item => item.contains(imgElement));
         document.body.style.overflow = 'hidden';
+
+        // Trigger animation
+        requestAnimationFrame(() => {
+            this.modal.classList.add('show');
+        });
     }
 
     closeModal() {
-        this.modal.style.display = "none";
-        // Re-enable body scrolling
-        document.body.style.overflow = '';
+        this.modal.classList.remove('show');
+        
+        setTimeout(() => {
+            this.modal.style.display = "none";
+            document.body.style.overflow = '';
+        }, 300);
     }
 
     handleSwipe(touchEndX, touchEndY) {
         const deltaX = this.touchStartX - touchEndX;
         const deltaY = this.touchStartY - touchEndY;
 
-        // Only handle horizontal swipes
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             const swipeThreshold = 50;
             if (Math.abs(deltaX) > swipeThreshold) {
                 if (deltaX > 0) {
-                    this.navigate(1); // Swipe left
+                    this.navigate(1);
                 } else {
-                    this.navigate(-1); // Swipe right
+                    this.navigate(-1);
                 }
             }
         }
     }
 
-    // navigate(direction) {
-    //     const visibleItems = Array.from(this.galleryItems)
-    //         .filter(item => !item.classList.contains('hidden'));
-    //     this.currentImageIndex = 
-    //         (this.currentImageIndex + direction + visibleItems.length) % visibleItems.length;
-        
-    //     // Create temporary image to handle loading
-    //     const tempImage = new Image();
-    //     tempImage.onload = () => {
-    //         this.modalImg.src = tempImage.src;
-    //     };
-    //     tempImage.src = visibleItems[this.currentImageIndex].querySelector('img').src;
-    // }
     navigate(direction) {
         const visibleItems = Array.from(this.galleryItems)
             .filter(item => !item.classList.contains('hidden'));
@@ -190,24 +160,27 @@ class Gallery {
         const nextItem = visibleItems[this.currentImageIndex];
         const nextImage = nextItem.querySelector('img');
         
-        // error handling for caption
+        // Fade out current image
+        this.modalImg.style.opacity = '0';
+        
         const captionElement = nextItem.querySelector('.image-caption h3');
         const nextCaption = captionElement ? captionElement.textContent : '';
         
         const tempImage = new Image();
         tempImage.onload = () => {
-            this.modalImg.src = tempImage.src;
-            document.getElementById('modalCaption').innerHTML = nextCaption ? `<h3>${nextCaption}</h3>` : '';
+            setTimeout(() => {
+                this.modalImg.src = tempImage.src;
+                document.getElementById('modalCaption').innerHTML = nextCaption ? `<h3>${nextCaption}</h3>` : '';
+                this.modalImg.style.opacity = '1';
+            }, 150);
         };
         tempImage.src = nextImage.src;
     }
 }
 
-// Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const gallery = new Gallery();
     
-    // Handle browser back/forward buttons
     window.addEventListener('popstate', () => {
         const hash = window.location.hash.substring(1);
         const category = hash || 'all';
@@ -218,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Expose necessary methods
     window.openModal = (imgElement) => gallery.openModal(imgElement);
     window.closeModal = () => gallery.closeModal();
     window.navigate = (direction) => gallery.navigate(direction);
