@@ -30,7 +30,7 @@
    margin: 15px auto 0;
 }
 
-/* Timeline */
+/* Timeline Style */
 .timeline {
    position: relative;
    padding-left: 50px;
@@ -46,14 +46,13 @@
    background-color: var(--nav-active);
 }
 
-/* Resume Items */
-.resume-item {
+.timeline .resume-item {
    margin-bottom: 40px;
    position: relative;
    padding: 0 0 0 30px;
 }
 
-.resume-item::before {
+.timeline .resume-item::before {
    content: '';
    position: absolute;
    left: -10px;
@@ -66,6 +65,26 @@
    box-shadow: 0 0 0 1px var(--nav-active);
 }
 
+/* Text Style */
+.text-style .resume-item {
+   padding: 30px;
+   background-color: var(--nav-bg);
+   border-radius: 8px;
+   margin-bottom: 30px;
+}
+
+.text-style .resume-item p {
+   font-size: 1.2rem;
+   line-height: 1.8;
+   color: var(--text);
+   text-align: left;
+   hyphens: auto;
+   strong {
+      font-weight: 500;
+   }
+}
+
+/* Common Resume Item Styles */
 .resume-item h3 {
    font-size: 1.5rem;
    font-weight: 500;
@@ -102,7 +121,6 @@
    font-size: 1.2rem;
    color: var(--text);
    margin: 5px 0;
-   /* font-family: 'Abel', sans-serif; */
    letter-spacing: 1px;
 }
 
@@ -157,7 +175,7 @@
    letter-spacing: 1px;
 }
 
-/* Additional Classes for Resume Items */
+/* Additional Classes */
 .resume-item .distinction {
    font-weight: 500;
    color: var(--text);
@@ -186,7 +204,6 @@
 }
 
 /* Media Queries */
-/* Medium Devices (Tablets) */
 @media (max-width: 768px) {
    .resume-container {
        padding: 15px;
@@ -204,43 +221,42 @@
        padding-left: 30px;
    }
 
-   .resume-item {
+   .timeline .resume-item {
        padding-left: 20px;
    }
 
-   .resume-item::before {
+   .timeline .resume-item::before {
        left: -36px;
        top: 6px;
        width: 10px;
        height: 10px;
    }
 
-   .skills-grid {
-       grid-template-columns: repeat(2, 1fr);
-       gap: 15px;
+   .text-style .resume-item {
+       padding: 20px;
    }
 
-   .skill-item {
-       padding: 20px 15px;
+   .text-style .resume-item p {
+       font-family: 'Cardo', sans-serif;
+       font-size: 1.1rem;
+       line-height: 1.6;
+       strong {
+         font-weight: 600;
+       }
    }
 }
 
-/* Small Devices (Phones) */
 @media (max-width: 480px) {
    .timeline {
        padding-left: 25px;
    }
 
-   .resume-item {
+   .timeline .resume-item {
        padding-left: 15px;
    }
 
-   .resume-item::before {
+   .timeline .resume-item::before {
        left: -31px;
-   }
-
-   .skills-grid {
-       grid-template-columns: repeat(2, 1fr);
    }
 
    .resume-section h2 {

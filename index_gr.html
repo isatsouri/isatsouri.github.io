@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Isidora Tsouri</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="greek">
+    <header class="header">
+        <!-- Menu toggle -->
+        <button class="menu-toggle">
+            <img src="icons/menu-left.svg" alt="Menu" class="icon">
+        </button>
+        <!-- Theme toggle -->
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <img src="icons/moon.svg" alt="Theme - Dark Mode" class="icon" id="theme-icon">
+        </button>
+        <!-- Language toggle -->
+        <div class="lang-toggle">
+            <a href="index_en.html" class="lang-option" data-lang="en">EN</a>
+            <span class="lang-separator">/</span>
+            <a href="index_gr.html" class="lang-option" data-lang="gr">GR</a>
+        </div>
+        <h1>ΙΣΙΔΩΡΑ ΤΣΟΥΡΗ</h1>
+        <nav class="nav">
+            <div class="lang-toggle-mobile">
+                <a href="index_en.html" class="lang-option" data-lang="en">EN</a>
+                <span class="lang-separator">/</span>
+                <a href="index_gr.html" class="lang-option" data-lang="gr">GR</a>
+            </div>
+            <a href="/" class="active" data-category="all">Επισκόπηση</a>
+            <a href="#" data-category="figures">Προσωπογραφίες</a>
+            <a href="#" data-category="nudes">Γυμνό</a>
+            <a href="#" data-category="still_lifes">Νεκρή Φύση</a>
+            <a href="#" data-category="open_air">Υπαίθρια</a>
+            <a href="#" data-category="exhibitions">Εκθέσεις</a>
+            <a href="/resume/">Βιογραφικό</a>
+            <a href="/contact/">Επικοινωνία</a>
+        </nav>
+        <div class="menu-overlay"></div>
+    </header>
+
+    <div class="gallery">
+        <div class="gallery-item" data-categories="figures,featured">
+            <img src="images/01.jpeg" alt="Image 1" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Μαριάνθη</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="still_lifes,featured">
+            <img src="images/02.jpeg" alt="Image 2" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures,nudes,featured">
+            <img src="images/03.jpeg" alt="Image 3" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Μιχαέλα</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures">
+            <img src="images/04.png" alt="Image 4" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures">
+            <img src="images/05.png" alt="Image 5" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="still_lifes">
+            <img src="images/06.jpg" alt="Image 6" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="still_lifes">
+            <img src="images/07.jpg" alt="Image 7" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures,nudes">
+            <img src="images/08.jpg" alt="Image 8" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures,nudes">
+            <img src="images/09.jpg" alt="Image 9" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="still_lifes">
+            <img src="images/10.jpg" alt="Image 10" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="still_lifes">
+            <img src="images/11.jpg" alt="Image 11" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures">
+            <img src="images/12.jpg" alt="Image 12" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures,nudes">
+            <img src="images/13.jpg" alt="Image 13" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="open_air">
+            <img src="images/14.jpg" alt="Image 14" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures,nudes">
+            <img src="images/15.jpg" alt="Image 15" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="open_air">
+            <img src="images/16.jpg" alt="Image 16" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures,nudes">
+            <img src="images/17.jpg" alt="Image 17" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="figures">
+            <img src="images/18.jpg" alt="Image 18" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+        <div class="gallery-item" data-categories="still_lifes">
+            <img src="images/19.jpg" alt="Image 19" onclick="openModal(this)">
+            <!-- <div class="image-caption">
+                <h3>Title of Work</h3>
+            </div> -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 ISIDORA TSOURI</p>
+            <a href="https://instagram.com/isatsouri" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Modal/Lightbox -->
+    <div id="imageModal" class="modal">
+        <button class="close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="nav-arrow prev" onclick="navigate(-1)">&#10094;</div>
+        <div class="nav-arrow next" onclick="navigate(1)">&#10095;</div>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/active-lang.js"></script>
+</body>
+</html>

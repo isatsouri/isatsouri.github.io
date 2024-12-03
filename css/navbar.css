@@ -49,6 +49,9 @@
     justify-content: center;
 }
 
+.lang-toggle-mobile {
+    display: none;
+}
 /* -------------------------- MOBILE STYLES -------------------------- */
 @media (max-width: 768px) {
     .menu-toggle {
@@ -76,11 +79,54 @@
         left: 0;
     }
 
-    .nav a {
+    .lang-toggle-mobile {
         width: 100%;
+        padding: 0 15px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        border-bottom: 1px solid var(--nav-active);
+        margin-bottom: 10px;
+        font-family: 'Abel', sans-serif;
+    }
+
+    /* Inherit styles from desktop language toggle */
+    .lang-toggle-mobile .lang-option {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        opacity: 0.5;
+    }
+
+    .lang-toggle-mobile .lang-option:hover {
+        opacity: 1;
+    }
+
+    .lang-toggle-mobile .lang-option.active {
+        opacity: 1;
+        font-weight: 600;
+    }
+
+    .lang-toggle-mobile .lang-separator {
+        color: var(--text);
+        opacity: 0.5;
+        font-size: 14px;
+    }
+    
+    .nav a {
+        display: inline-block;  /* Changed from block to inline-block */
+        padding: 12px 15px;     /* Reduce padding to match content */
+        width: auto;            /* Remove full width */
         text-align: left;
-        padding: 15px;
-        background: none;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 1.25rem;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
     }
 
     /* Overlay when menu is open */

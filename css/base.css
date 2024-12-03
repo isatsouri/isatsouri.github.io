@@ -1,5 +1,5 @@
 /* ----------------------- IMPORTS ----------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Abel:wght@400;700&family=Cardo:wght@300;400;500;600;700&display=swap');
 
 /* ----------------------- THEME VARIABLES ----------------------- */
 :root {
@@ -39,6 +39,17 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* GREEK */
+body.greek {
+    font-family: 'Cardo', sans-serif;
+    font-weight: 300;
+}
+
+body.greek .nav a {
+    font-weight: 400;
+    font-size: 1.15rem;
+}
+
 /* ----------------------- HEADER STYLES ----------------------- */
 .header {
     padding: 40px 20px;
@@ -75,6 +86,42 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ----------------------- LANGUAGE TOGGLE ----------------------- */
+.lang-toggle {
+    position: fixed;
+    top: 15px;
+    right: 65px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 1000;
+    font-family: 'Abel', sans-serif;
+}
+
+.lang-option {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+}
+
+.lang-option:hover {
+    opacity: 1;
+}
+
+.lang-option.active {
+    opacity: 1;
+    font-weight: 600;
+}
+
+.lang-separator {
+    color: var(--text);
+    opacity: 0.5;
+    font-size: 14px;
 }
 
 /* ----------------------- ICONS ----------------------- */
@@ -150,6 +197,10 @@ body {
 
 /* ----------------------- MOBILE STYLES ----------------------- */
 @media (max-width: 768px) {
+    .lang-toggle {
+        display: none;
+    }
+
     .icon {
         width: 25px;
         height: 25px;
@@ -170,7 +221,7 @@ body {
     }
 
     .footer-content {
-        flex-direction: row;  /* Changed to keep icon next to text */
+        flex-direction: row;
         gap: 10px;
     }
 }

@@ -11,22 +11,32 @@
 </head>
 <body>
    <header class="header">
+      <!-- Menu toggle -->
       <button class="menu-toggle">
-         <!-- <i class="fas fa-bars"></i> -->
          <img src="../icons/menu-left.svg" alt="Menu" class="icon">
-      </button>
-      <button class="theme-toggle" onclick="toggleTheme()">
-         <!-- <i class="fas fa-moon"></i> -->
+     </button>
+     <!-- Theme toggle -->
+     <button class="theme-toggle" onclick="toggleTheme()">
          <img src="../icons/moon.svg" alt="Theme - Dark Mode" class="icon" id="theme-icon">
-      </button>
+     </button>
+     <!-- Language toggle -->
+     <div class="lang-toggle">
+         <a href="index_en.html" class="lang-option" data-lang="en">EN</a>
+         <span class="lang-separator">/</span>
+         <a href="index_gr.html" class="lang-option" data-lang="gr">GR</a>
+     </div>
       <h1>ISIDORA TSOURI</h1>
       <nav class="nav">
+         <div class="lang-toggle-mobile">
+            <a href="index_en.html" class="lang-option" data-lang="en">EN</a>
+            <span class="lang-separator">/</span>
+            <a href="index_gr.html" class="lang-option" data-lang="gr">GR</a>
+         </div>
          <a href="/">Overview</a>
          <a href="/#figures">Figures</a>
          <a href="/#nudes">Nudes</a>
-         <a href="/#still_lives">Still Lives</a>
+         <a href="/#still_lifes">Still Lifes</a>
          <a href="/#open_air">Open Air</a>
-         <a href="/#exhibitions">Exhibitions</a>
          <a href="/#exhibitions">Exhibitions</a>
          <a href="/resume/" class="active">Résumé</a>
          <a href="/contact/">Contact</a>
@@ -35,7 +45,7 @@
    </header>
 
    <div class="resume-container">
-      <section class="resume-section">
+      <section class="resume-section timeline">
          <h2>Education</h2>
 
          <div class="resume-item">
@@ -86,5 +96,6 @@
 
    <script src="../js/theme.js"></script>
    <script src="../js/menu.js"></script>
+   <script src="../js/active-lang.js"></script>
 </body>
 </html>
