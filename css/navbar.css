@@ -108,6 +108,7 @@
     .lang-toggle-mobile .lang-option.active {
         opacity: 1;
         font-weight: 600;
+        background-color: transparent;
     }
 
     .lang-toggle-mobile .lang-separator {
