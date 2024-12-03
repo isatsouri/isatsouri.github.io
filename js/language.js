@@ -29,15 +29,21 @@ class LanguageManager {
    }
 
    switchToLanguage(lang) {
-       localStorage.setItem('language', lang);
-       
-       // Get current page path and replace language suffix
-       const currentPath = window.location.pathname;
-       const basePath = currentPath.replace(/(_en|_gr)?\.html$/, '');
-       const newPath = lang === 'gr' ? `${basePath}_gr.html` : `${basePath}_en.html`;
-       
-       window.location.href = newPath;
-   }
+    localStorage.setItem('language', lang);
+    
+    const currentPath = window.location.pathname;
+    
+    // Special handling for root/index
+    if (currentPath === '/' || currentPath.endsWith('index.html')) {
+        window.location.href = lang === 'gr' ? 'index_gr.html' : 'index_en.html';
+        return;
+    }
+    
+    // Normal path handling for other pages
+    const basePath = currentPath.replace(/(_en|_gr)?\.html$/, '');
+    const newPath = lang === 'gr' ? `${basePath}_gr.html` : `${basePath}_en.html`;
+    window.location.href = newPath;
+    }
 
    updateActiveLanguage(lang) {
        document.querySelectorAll('.lang-option').forEach(option => {
